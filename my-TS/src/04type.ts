@@ -1,0 +1,1 @@
+let myname:string ='xxoo'

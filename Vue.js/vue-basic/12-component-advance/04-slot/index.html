@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>slot</title>
+  <script src="../../../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <child>
+      <div slot="s1">
+        hello
+        <span>{{title}}</span>
+      </div>
+      <div slot="s2" slot-scope="d">
+        <p>{{d}}</p>
+      </div>
+      <div>
+        <a href="http://www.baidu.com">baidu</a>
+      </div>
+      <!-- <template #s1>
+        hello
+        <span>{{title}}</span>
+      </template>
+      <template #[attr]="{data, data2}">
+        <p>{{data}}</p>
+        <p>{{data2}}</p>
+      </template>
+      <template #default="d">
+        <a href="http://www.baidu.com">{{d.data3}}</a>
+      </template> -->
+    </child>
+    <!-- <child></child> -->
+  </div>
+  <script>
+    const Child = {
+      template: `
+        <div>
+          <slot name="s2" :data="msg"></slot>
+          <slot>
+            <h1>header</h1>
+          </slot>
+          <slot name="s1"></slot>
+        </div>
+      `,
+      data() {
+        return {
+          msg: 'message'
+        }
+      }
+    }
+
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        title: 'world',
+        attr: 's2'
+      },
+      components: {
+        Child
+      }
+    })
+  </script>
+</body>
+</html>

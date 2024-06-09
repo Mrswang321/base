@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>force-update</title>
+  <script src="../../../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    {{x}}
+    <child></child>
+  </div>
+  <script>
+    let template = `
+      <div v-once>
+        child
+        {{title}}
+      </div>
+    `
+
+    Vue.component('child', {
+      template,
+      data() {
+        return {
+          title: 'hello'
+        }
+      },
+      mounted() {
+        this.title = 'world'
+      }
+    })
+
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        x: ['a']
+      },
+      mounted() {
+        this.x[0] = 'aaa'
+        this.$forceUpdate()
+      },
+    })
+  </script>
+</body>
+</html>

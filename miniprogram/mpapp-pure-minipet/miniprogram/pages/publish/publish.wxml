@@ -1,0 +1,47 @@
+<view class="container" wx:if="{{!isSubmit}}">
+  <view class="item">
+    <view class="label">我的地址</view>
+    <view class="content" bindtap="handleChooseLocation">
+      {{address}}
+    </view>
+  </view>
+  <view class="item">
+    <view class="label">类型</view>
+    <view class="content">
+      <radio-group bindchange="radioChange">
+        <label>
+          <view>
+            <radio value="buy" checked="true"/>
+          </view>
+          <view>求购</view>
+        </label>
+        <label>
+          <view>
+            <radio value="sell"/>
+          </view>
+          <view>转让</view>
+        </label>
+      </radio-group>
+    </view>
+  </view>
+  <view class="item">
+    <view class="label">说明</view>
+    <view class="content">
+      <input model:value="{{message}}" placeholder="请输入说明" />
+    </view>
+  </view>
+  <view class="item">
+    <view class="label">联系方式</view>
+    <view class="content">
+      <input model:value="{{contact}}" placeholder="请输入联系方式" />
+    </view>
+  </view>
+  <view class="button" bindtap="handleSubmit">
+    发布信息
+  </view>
+</view>
+
+<view wx:if="{{isSubmit && isComplete}}" class="feedback">
+  <import src="../../template/feedback.wxml"></import>
+  <template is="feedback" data="{{isSucc}}"></template>
+</view>

@@ -1,0 +1,12 @@
+<view class="feedback-body">
+  <view class="icon-box">
+    <icon class="icon-box-img" type="{{isSucc ? 'success' : 'cancel'}}" size="80"></icon>
+    <view class="icon-box-title">数据添加{{isSucc ? '成功' : '失败'}}！</view>
+  </view>
+  <view 
+    class="feedback-button {{isSucc ? '' : 'feedback-button-fail'}}"
+    bindtap="handleFeedbackButtonTap"
+  >
+    {{isSucc ? '返回' : '重新填写'}}
+  </view>
+</view>

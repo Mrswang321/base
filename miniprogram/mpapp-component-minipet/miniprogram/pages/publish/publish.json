@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "feedback": "../../components/feedback",
+    "mp-cell": "weui-miniprogram/cell/cell",
+    "mp-cells": "weui-miniprogram/cells/cells",
+    "mp-checkbox-group": "weui-miniprogram/checkbox-group/checkbox-group",
+    "mp-form": "weui-miniprogram/form/form",
+    "mp-checkbox": "weui-miniprogram/checkbox/checkbox"
+  },
+  "navigationBarTitleText": "发布信息"
+}

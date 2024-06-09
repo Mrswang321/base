@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-for</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <!-- <ul>
+      <li v-for="(li, index) in list">
+        <span v-for="(item, idx) in li">
+          {{item}}
+        </span>
+      </li>
+    </ul> -->
+    <!-- <ul>
+      <li v-for="value, key, index in obj">
+        {{key}} - {{value}} - {{index}}
+      </li>
+    </ul> -->
+    <!-- <my-header v-for="(li, index) in list2" :key="li"></my-header> -->
+    <!-- <ul>
+      <li v-for="li in list3">{{li}}</li>
+    </ul> -->
+    <!-- <div v-for="n,i in 10">{{n}} {{i}}</div> -->
+    <!-- <div v-for="item in 'abcdef'">{{item}}</div> -->
+
+    <template v-for="n in 10">
+      <div>hello</div>
+      <div>world</div>
+    </template>
+  </div>
+  <script>
+    const myHeader = {
+      template: `<h1>header</h1>`
+    }
+
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        list: [
+          ['a', 'b', 'c'],
+          ['d', 'e', 'f']
+        ],
+        list2: [
+          'a', 'b', 'c', 'd', 'e'
+        ],
+        obj: {
+          x: 23,
+          y: 1,
+          z: 2
+        }
+      },
+      computed: {
+        list3() {
+          return this.list2.filter((value, index) => index % 2 === 0)
+        }
+      },
+      components: {
+        'my-header': myHeader
+      }
+    })
+  </script>
+</body>
+</html>

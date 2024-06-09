@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>event</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <div>{{title}}</div>
+    <div @click="title='abc'">
+      <div>
+        <button @click.stop="title='world'">click</button>
+        <a @click.prevent.once="handleClick" href="http://www.baidu.com">test</a>
+      </div>
+    </div>
+    <div @click.self="handleClick2" style="width: 100px; height: 100px; background: red">
+      <div style="width: 50px; height: 50px; background: greenyellow;">
+        map
+      </div>
+      <input type="text" @keyup.13="handleKeyup">
+      <button v-on:click.alt.exact="onClick">A</button>
+    </div>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        title: 'hello'
+      },
+      methods: {
+        handleClick(args, e) {
+          console.log(e)
+        },
+        handleClick2() {
+          console.log(100)
+        },
+        handleKeyup() {
+          console.log(0)
+        },
+        onClick() {
+          console.log(200)
+        }
+      },
+    })
+
+    document.body.addEventListener('click', () => {
+      
+    }, {
+      once: true,
+      passive: true,
+      capture: true
+    })
+  </script>
+</body>
+</html>

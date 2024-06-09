@@ -1,0 +1,29 @@
+@import '~@/assets/stylus/border.styl'
+@font-face
+  font-family 'iconfont-nav'
+  src url('~@/assets/icons/iconfont-nav.woff') format('woff'),
+      url('~@/assets/icons/iconfont-nav.ttf') format('truetype')
+
+@font-face
+  font-family 'iconfont-nav'
+  src url('~@/assets/icons/iconfont-search.woff') format('woff'),
+      url('~@/assets/icons/iconfont-search.ttf') format('truetype')
+
+.iconfont-nav
+  font-family 'iconfont-nav'
+
+.iconfont-nav-movie::before
+  content '\e8ae'
+
+.iconfont-nav-theater::before
+  content '\e8c0'
+
+.iconfont-nav-profile::before
+  content '\e606'
+
+.movie-ico
+  font-family: iconfont-nav !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;

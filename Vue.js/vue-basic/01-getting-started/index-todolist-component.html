@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>todolist</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <div>
+      <input 
+        v-model="task" 
+        type="text" 
+        placeholder="请输入任务"
+        v-on:keyup.enter="handleKeyup"
+      >
+    </div>
+    <ul>
+      <!-- <li v-for="(li, i) in list">
+        {{li}} <button v-on:click="handleClick(i)">X</button>
+      </li> -->
+      <my-li
+        v-for="(li, i) in list"
+        v-bind:title="li"
+        v-bind:index="i"
+        v-bind:list="list"
+        v-if="i % 2 === 0"
+      ></my-li>
+      <!-- <my-li title="bbb"></my-li>
+      <my-li title="ccc"></my-li>
+      <my-li title="ddd"></my-li> -->
+    </ul>
+  </div>
+  <script>
+    Vue.component('my-li', {
+      props: ['title', 'index', 'list'],
+      template: `
+        <li>{{title}}  <button v-on:click="handleClick">X</button></li>
+      `,
+      methods: {
+        handleClick() {
+          this.list.splice(this.index, 1)
+        }
+      },
+    }) //kebab-case camelCase ParscalCase
+
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        task: '',
+        list: ['task 0', 'task1', 'task2']
+      },
+      methods: {
+        handleKeyup() {
+          this.list.push(this.task)
+          this.task = ''
+        }
+      },
+    })
+  </script>
+</body>
+</html>

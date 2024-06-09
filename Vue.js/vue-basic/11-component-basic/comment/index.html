@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>comment</title>
+  <script src="../../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <c-list :urls="urls"></c-list>
+    <c-form @on-receive-url="handleReceiveUrl"></c-form>
+  </div>
+
+  <script type="module">
+    import list from './list.js'
+    import form from './form.js'
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        urls: []
+      },
+      components: {
+        'c-list': list,
+        'c-form': form
+      },
+      methods: {
+        handleReceiveUrl(url) {
+          this.urls.push(url)
+        }
+      }
+    })
+  </script>
+</body>
+</html>

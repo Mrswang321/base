@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lifetimes</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    {{title}}
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#root',
+
+      data: {
+        title: 'hello'
+      },
+
+      // 通过vm.$options去读取
+      selfX: 0,
+      selfFoo: () => {
+        console.log(0)
+      },
+
+      beforeCreate() {
+        // console.log(this) // yes
+        // console.log(this.title) // no
+        // console.log(document.querySelector('#root')) // maybe, 模板还没有渲染
+        // 应用场景： 给实例自定义内容
+        this.x = 100 // yes
+      },
+
+      created() {
+        // console.log(this) // yes
+        // console.log(this.title) // yes
+        // console.log(document.querySelector('#root')) // maybe, 模板还没有渲染
+        // 应用场景：修改data的值
+        this.title = 'world'
+      },
+
+      beforeMount() {
+        // console.log(this) // yes
+        // console.log(this.title) // yes
+        // console.log(document.querySelector('#root')) // maybe, 模板还没有渲染
+        // 应用场景：修改data的值
+        // this.title = 'world'
+      },
+
+      mounted() {
+        // console.log(this) // yes
+        // console.log(this.title) // yes
+        // console.log(document.querySelector('#root')) // yes
+        // 应用场景：一般在第一次页面渲染完毕后的工作都在这里完成
+        setTimeout(() => {
+          // this.title = 'hello'
+          this.$destroy()
+        }, 5000)
+
+        // ajax 放到这里
+      },
+
+      // mounted() {
+      //   console.log(this.$options.selfX)
+      // }
+      
+      beforeUpdate() {
+        // console.log(document.querySelector('#root'))
+      },
+
+      updated() {
+        // console.log(document.querySelector('#root'))
+        // setInterval(() => {
+          // this.title = 'abc'
+        // }, 1000)
+      },
+
+      beforeDestroy() {
+        console.log('beforeDestroy.')
+      },
+
+      destroyed() {
+        console.log('destroyed.')
+      }
+    })
+  </script>
+</body>
+</html>

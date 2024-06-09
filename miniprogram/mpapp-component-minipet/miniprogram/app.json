@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/publish/publish",
+    "pages/search/search",
+    "pages/detail/detail"
+  ],
+  "entryPagePath": "pages/index/index",
+  "window": {
+    "navigationBarBackgroundColor": "#52b9d2",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "萌宠交易圈"
+  },
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "kbone": true,
+    "weui": true
+  }
+}

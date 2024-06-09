@@ -1,0 +1,19 @@
+.item {
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: solid 1rpx #eee;
+  .label {
+    display: flex;
+    align-items: center;
+    padding-left: 20rpx;
+    color: #666;
+  }
+}
+
+.image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+}

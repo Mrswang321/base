@@ -1,0 +1,5 @@
+<!--pages/detail.wxml-->
+<text>pages/detail.wxml</text>
+<navigator open-type="navigateBack"> 返回 </navigator>
+
+<navigator open-type="reLaunch" url="/pages/index">重置路由</navigator>

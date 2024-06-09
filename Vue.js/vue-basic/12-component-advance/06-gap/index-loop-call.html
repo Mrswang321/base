@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>loop-call</title>
+  <script src="../../../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <tree-folder :folder="folder"></tree-folder>
+  </div>
+  <script>
+    Vue.component('tree-folder', {
+      props: ['folder'],
+      template: `
+        <p>
+          <span>{{ folder.name }}</span>
+          <tree-folder-contents :children="folder.children"/>
+        </p>
+      `
+    })
+
+    Vue.component('tree-folder-contents', {
+      props: ['children'],
+      template: `
+        <ul>
+          <li v-for="child in children">
+            <tree-folder v-if="child.children" :folder="child"/>
+            <span v-else>{{ child.name }}</span>
+          </li>
+        </ul>
+      `
+    })
+
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        folder: {
+          name: 'folder 1',
+          children: {
+            folder: {
+              name: 'folder 2',
+              children: {
+                folder: {
+                  name: 'folder 3'
+                },
+                folder2: {
+                  name: 'folder 4'
+                }
+              }
+            },
+            folder2: {
+              name: 'folder 2',
+              children: {
+                folder: {
+                  name: 'folder 3'
+                },
+                folder2: {
+                  name: 'folder 4'
+                }
+              }
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hash rouer</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  <ul>
+    <li>电影</li>
+    <li>影院</li>
+  </ul>
+  <div id="content">
+    
+  </div>
+  <script>
+    let comp = [
+      {
+        path: '/movie',
+        component: '<div>comp1</div>'
+      },
+      {
+        path: '/theater',
+        component: '<div>comp2</div>'
+      }
+    ]
+
+    $('li').on('click', function() {
+      location.hash = comp[$(this).index()].path
+    })
+
+    $(window).on('hashchange', () => {
+      let hash = location.hash.slice(1)
+      $('#content').html(comp.filter(v => v.path === hash)[0]['component'])
+    })
+
+    // let comparr = [
+    //   '<h1>comp1</h1>',
+    //   '<h1>comp2</h1>'
+    // ]
+
+    // $('li').on('click', function() {
+    //   $('#content').html(comparr[$(this).index()])
+    // })
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    性别： {{gender | g('人') | g2('啊')}}
+    身价：{{price}}
+  </div>
+  <script>
+    // Vue.filter('g', (value, arg1) => {
+    //   return (value === 0 ? '男' : '女') + arg1
+    // })
+    Vue.filter('g2', (value, arg1) => {
+      return value + arg1
+    })
+
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        gender: 0,
+        price: 10000000000
+      },
+      filters: {
+        g(value, arg1) {
+          return (value === 0 ? '男' : '女') + arg1
+        }
+      }
+      // computed: {
+      //   g() {
+      //     return this.gender === 0 ? '男' : '女'
+      //   }
+      // }
+    })
+  </script>
+</body>
+</html>

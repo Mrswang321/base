@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>plugins</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <my-component></my-component>
+  </div>
+  <script type="module">
+    import MyPlugin from './my-plugins.js'
+    Vue.use(MyPlugin, {dev: true})
+
+    var vm = new Vue({
+      el: '#root',
+      mounted() {
+        console.log(this.$myvar)
+        this.$myfoo()
+        console.log(Vue.myvar)
+        // this.$set()
+        // Vue.set()
+        this.$options.mymounted()
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>class-style</title>
+  <script src="../vue.js"></script>
+  <style>
+    .title {
+      font-size: 100px;
+    }
+    .color {
+      color: red
+    }
+    .weight {
+      font-weight: 900;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <!-- <div :class="{title: titleCls, color: colorCls}"> -->
+    <!-- <div class="weight" :class="cls"> -->
+    <!-- <div :class="clsArr">
+      {{title}}
+    </div> -->
+    <div
+      :style="{fontSize: '100px'}"
+    >
+      {{title}}
+    </div>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        title: 'hello',
+        titleCls: false,
+        colorCls: true,
+        cls: {
+          title: false, 
+          color: true
+        },
+        clsArr: ['weight', {
+          title: false, 
+          color: true
+        }]
+      },
+      mounted() {
+        // this.titleCls = true
+        this.cls.title = true
+      },
+    })
+  </script>
+</body>
+</html>

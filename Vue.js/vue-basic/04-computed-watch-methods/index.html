@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>computed, watch, methods</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    {{reverse}}
+    {{num}}
+    {{content}}
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        title: 'hello',
+        num: 100,
+        obj: {
+          x: {
+            y: 100
+          }
+        },
+        bool: true
+      },
+      computed: {
+        reverse() {
+          // console.log('run...')
+          // this.foo()
+          // 基于依赖缓存
+          return this.title.split('').reverse().join('')
+          // 不在计算属性里具有副作用的计算
+          // return await new Promise((resolve, rejct) => {
+          //   setTimeout(() => {
+          //     resolve(this.title.split('').reverse().join(''))
+          //   }, 2000)
+          // })
+        }
+      },
+      methods: {
+        doReverse() {
+          console.log('method run...')
+          // 不会基于依赖缓存
+          return this.title.split('').reverse().join('')
+        },
+        foo() {
+          console.log('foo...')
+        },
+        watchTitle(newVal, oldVal) {
+          console.log(newVal)
+          // 异步操作
+          // ajax
+          // setTimeout(() => {
+          //   this.title = 'abc'
+          // }, 2000)
+        },
+        handle1() {
+          console.log('handle1')
+        }
+      },
+
+      watch: {
+        // 观察具有响应特性的数据
+        title: {
+          handler: 'watchTitle',
+          immediate: true
+        },
+        content() {
+          console.log('content has changed.')
+        },
+        obj: {
+          handler(value) {
+            console.log(value.x.y)
+          },
+          deep: true
+        },
+        bool: [
+          'handle1',
+          function handle2 (val, oldVal) { console.log('handle2') },
+          {
+            handler: function handle3 (val, oldVal) { console.log('handle3') },
+          }
+        ],
+        'obj.x'(val) {
+          console.log(val.y)
+        }
+      },
+
+      beforeCreate() {
+        this.content = 'balabala...'
+      },
+
+      mounted() {
+        // this.title = 'hello'
+        this.title = 'world'
+        this.content = 'anywhere'
+        this.num = 1000
+        this.obj.x.y = 300
+        this.bool = false
+        this.obj.x = {
+          y: 400
+        }
+      },
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>props</title>
+  <script src="../../../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <!-- <child 
+      :title-value="title"
+      :prop-value="obj"
+      v-bind="obj"
+    ></child> -->
+
+    <!-- <child2
+      :title="10"
+    ></child2> -->
+
+    <child3 :title="'abc'" id="abc" class="abc"></child3>
+  </div>
+  <script>
+    const child = {
+      props: ['TitleValue', 'propValue', 'x', 'y', 'z'],
+      template: `
+        <div>
+          {{title2}}
+        </div>
+      `,
+      data() {
+        return {
+          title: this.TitleValue // 只被渲染一次（初始化）
+        }
+      },
+      mounted() {
+        // this.propValue = { x: 0, y: 100, z: 2 }
+        // console.log(typeof this.propValue)
+        setTimeout(() => {
+          this.title = 'world'
+        }, 2000)
+      },
+      computed: {
+        title2() {
+          return this.TitleValue + '!!!'
+        }
+      }
+    }
+
+    const child2 = {
+      props: {
+        // title: Nubmer,
+        // title: [Number, String],
+        // title: {
+        //   type: Number,
+        //   default: 100
+        // }
+        // title: {
+        //   type: Number,
+        //   required: true
+        // }
+        // title: {
+        //   type: Number,
+        //   default() {
+        //     return 100 
+        //   }
+        // }
+        title: {
+          type: Number,
+          validator(value) {
+            return value > 100
+          }
+        }
+      },
+
+      template: `
+        <div>{{title}}</div>
+      `
+    }
+
+    const child3 = {
+      props: ['title'],
+      inheritAttrs: false,
+      template: `
+        <div><div>hello</div>{{'abc'}}</div>
+      `
+    }
+
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        title: 'hello',
+        obj: {
+          x: 0,
+          y: 1, 
+          z: 2
+        }
+      },
+
+      components: {
+        child,
+        child2,
+        child3
+      },
+
+      methods: {
+        foo() {
+          console.log(0)
+        }
+      },
+
+      mounted() {
+        setTimeout(() => {
+          this.title = 'abc'
+        }, 4000)
+      }
+    })
+  </script>
+</body>
+</html>

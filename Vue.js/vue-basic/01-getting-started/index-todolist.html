@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>todolist</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <div>
+      <input 
+        v-model="task" 
+        type="text" 
+        placeholder="请输入任务"
+        v-on:keyup.enter="handleKeyup"
+      >
+    </div>
+    <ul>
+      <li v-for="(li, i) in list">
+        {{li}} <button v-on:click="handleClick(i)">X</button>
+      </li>
+    </ul>
+  </div>
+  <script>
+    var vm = new Vue({
+      props: [],
+      el: '#root',
+      data: {
+        task: '',
+        list: ['task 1']
+      },
+      methods: {
+        handleKeyup() {
+          this.list.push(this.task)
+          this.task = ''
+        },
+        handleClick(i) {
+          this.list.splice(i, 1)
+        }
+      },
+      mounted() {
+        
+      },
+    })
+  </script>
+</body>
+</html>

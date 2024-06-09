@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>gap</title>
+  <script src="../../../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <child1 ref="c1"></child1>
+    <div ref="div1"></div>
+  </div>
+  <script>
+    const Child2 = {
+      inject: ['www'],
+      template: `
+        <div>child 2 {{www}}</div>
+      `,
+
+      mounted() {
+        console.log(this.$root.x)
+        console.log(this.$parent.y)
+      },
+    }
+
+    const Child1 = {
+      inject: ['www', 'setWww'],
+      template: `
+        <div>
+          <h1>child1</h1>
+          <child2></child2>
+          <div>
+            {{www}}
+          </div>
+        </div>
+      `,
+      data() {
+        return {
+          y: 100
+        }
+      },
+      components: {
+        Child2
+      },
+      mounted() {
+        this.setWww('def')
+        // console.log(this.www)
+      },
+    }
+
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        x: 0
+      },
+      components: {
+        Child1
+      },
+      provide() {
+        return {
+          www: 'abc',
+          setWww(args) {
+            this.www = args
+          }
+        }
+      },
+      mounted() {
+        console.log(this.$refs)
+      },
+    })
+  </script>
+</body>
+</html>

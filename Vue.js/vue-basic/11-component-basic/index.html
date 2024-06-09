@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>component basic</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <my-header></my-header>
+    <my-footer></my-footer>
+    <my-footer></my-footer>
+  </div>
+  <script>
+    Vue.component('my-header', {
+      template: `
+        <header>line 1</header>
+      `
+    })
+
+    const myFooter = {
+      template: `
+        <footer>{{x}}</footer>
+      `,
+      data() {
+        return {
+          x: 'line 1'
+        }
+      }
+    }
+
+    var vm = new Vue({
+      el: '#root',
+      components: {
+        'my-footer': myFooter
+      }
+    })
+  </script>
+</body>
+</html>

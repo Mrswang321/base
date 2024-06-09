@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-if</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <!-- <div v-if="isShow">
+      {{hello}}
+    </div>
+    不允许有第三者
+    <div>haha</div> 
+    <div v-else-if="isShowHide">
+      {{msg}}
+    </div>
+    <div v-else>
+      {{title}}
+    </div> -->
+    <!-- <div v-show="isShow">{{hello}}</div> -->
+    <!-- <template v-if="isShow">
+      <div>{{hello}}</div>
+      <div>{{msg}}</div>
+    </template> -->
+    <!-- <template v-if="isShow">
+      <label>Username</label>
+      <input key="key1" placeholder="Enter your username">
+    </template>
+    <template v-else>
+      <label>Email</label>
+      <input key="key2" placeholder="Enter your email address">
+    </template> -->
+    <!-- <div v-if="isShow">{{hello}}</div> -->
+    <div>
+      <ul>
+        <template v-if="true">
+          <div>
+            <li v-for="li in list">{{li}}</li>
+          </div>
+        </template>
+      </ul>
+    </div>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        hello: 'world',
+        msg: 'abc',
+        title: 'def',
+        isShow: false,
+        isShowHide: false,
+        list: [
+          'a',
+          'b',
+          'c'
+        ]
+      }
+    })
+  </script>
+</body>
+</html>

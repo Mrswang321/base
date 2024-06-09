@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>form</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <input type="text" v-model="textValue" />
+    <textarea name="" id="" cols="30" rows="10" v-model="mulTextValue"></textarea>
+    <div>
+      <input type="checkbox" v-model="checkboxValue" /> {{checkboxValue}}
+    </div>
+    <div>
+      <input type="checkbox" v-model="mulCheckboxValue" value="a" />
+      <input type="checkbox" v-model="mulCheckboxValue" value="b" />
+      <input type="checkbox" v-model="mulCheckboxValue" value="c" />
+      {{mulCheckboxValue}}
+    </div>
+    <div>
+      <input type="radio" v-model="radioValue" value="a">
+      <input type="radio" v-model="radioValue" value="b">
+      <input type="radio" v-model="radioValue" value="c">
+      {{radioValue}}
+    </div>
+    <div>
+      <select multiple v-model="selectValue">
+        <option>北京</option>
+        <option>深圳</option>
+        <option>上海</option>
+      </select>
+      {{selectValue}}
+    </div>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        textValue: 'abc',
+        mulTextValue: 'def',
+        checkboxValue: true,
+        mulCheckboxValue: [],
+        radioValue: '',
+        selectValue: []
+      }
+    })
+  </script>
+</body>
+</html>

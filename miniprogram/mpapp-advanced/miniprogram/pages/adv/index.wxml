@@ -1,0 +1,35 @@
+<!--pages/adv/index.wxml-->
+<!-- <text class="title">index</text>
+<demo url="{{url}}">
+  <text slot="s1"> world</text>
+  <text slot="s2">!!!</text>
+</demo>
+<button bindtap="handleTap">about</button>
+<about></about> -->
+
+<!-- <parent></parent> -->
+
+<!-- <custom-ul>
+  <custom-li></custom-li>
+  <custom-li></custom-li>
+  <custom-li></custom-li>
+</custom-ul> -->
+
+<!-- <custom-form>
+  <view>
+    input
+    <custom-input></custom-input>
+  </view>
+  view
+  <custom-button> submit </custom-button>
+</custom-form> -->
+
+<!-- <watch-demo title="{{title}}"></watch-demo> -->
+<!-- <pure-data title="{{title}}" timestamp="{{13545969454456}}">
+
+</pure-data> -->
+
+<!-- <abstract generic:abs-node="component1"></abstract>
+<abstract></abstract> -->
+
+<definition-field></definition-field>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>directive</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <input type="text" v-focus>
+    <div v-font:bold.green="'100px'">hello</div>
+  </div>
+  <script>
+    Vue.directive('focus', {
+      inserted(el) {
+        el.focus()
+      }
+    })
+
+    // Vue.directive('font', (el, bindings) => {
+    //   const { arg, value, modifiers } = bindings
+    //   el.style.fontWeight = arg
+    //   el.style.color = Object.keys(modifiers)[0]
+    //   el.style.fontSize = value
+    // })
+
+    var vm = new Vue({
+      el: '#root',
+      directives: {
+        font(el, bindings) {
+          const { arg, value, modifiers } = bindings
+          el.style.fontWeight = arg
+          el.style.color = Object.keys(modifiers)[0]
+          el.style.fontSize = value
+        }
+      }
+    })
+  </script>
+</body>
+</html>

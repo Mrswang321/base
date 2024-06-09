@@ -1,0 +1,12 @@
+<button bindtap="handleTap">获取用户信息</button>
+<button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取用户手机号</button>
+
+<block wx:if="{{canIUseOpenData}}" calss="userinfo-opendata">
+  <view class="userinfo-avatar">
+    <open-data type="userAvatarUrl"></open-data>
+  </view>
+  <open-data type="userNickName"></open-data>
+  <open-data type="userCity"></open-data>
+</block>
+
+<button bindtap="handleSignin">登录</button>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>slot(插槽)</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <my-header>
+      <div>world</div>
+      <div>world 2</div>
+    </my-header>
+  </div>
+  <script>
+    const Header = {
+      template: `
+        <div>
+          <h1>header</h1>
+          <slot></slot> 
+        </div>
+      `
+    }
+    var vm = new Vue({
+      el: '#root',
+      components: {
+        'my-header': Header
+      }
+    })
+  </script>
+</body>
+</html>

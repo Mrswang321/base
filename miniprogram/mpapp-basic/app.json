@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/auth/auth",
+    "pages/logs",
+    "pages/index",
+    "pages/detail"
+  ],
+  "entryPagePath": "pages/auth/auth",
+  "window": {
+    "navigationBarBackgroundColor": "#6435c9",
+    "backgroundColor": "#ccc",
+    "enablePullDownRefresh": true,
+    "pageOrientation": "portrait"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false,
+  "navigateToMiniProgramAppIdList": [
+    "wxeb8c70d2f9b9d1d3"
+  ],
+  "tabBar": {
+    "color": "#ccc",
+    "selectedColor": "#000",
+    "backgroundColor": "#f9efd4",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/auth/auth",
+        "text": "首页",
+        "iconPath": "/resources/location.png",
+        "selectedIconPath": "/resources/location-active.png"
+      },
+      {
+        "pagePath": "pages/logs",
+        "text": "日志",
+        "iconPath": "/resources/menu.png",
+        "selectedIconPath": "/resources/menu-active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap99.json"
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>create component</title>
+  <script src="../../../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <gp21-header></gp21-header>
+    <gp21-search></gp21-search>
+  </div>
+  <script type="module">
+    import Gp21Header from './header.js'
+
+    var vm = new Vue({
+      el: '#root',
+      components: {
+        // 'gp21-header': Gp21Header
+        Gp21Header
+      }
+    })
+  </script>
+</body>
+</html>

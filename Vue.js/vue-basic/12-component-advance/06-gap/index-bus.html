@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bus</title>
+  <script src="../../../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <child1></child1>
+    {{greeting}}
+  </div>
+  <script type="module">
+    import bus from './bus.js'
+
+    const Child2 = {
+      template: `
+        <div>child 2</div>
+      `
+    }
+
+    const Child1 = {
+      template: `
+        <div>
+          <h1>child1 {{msg}}</h1>
+        </div>
+      `,
+
+      data() {
+        return {
+          msg: 'aaa'
+        }
+      },
+
+      mounted() {
+        bus.$on('msg', (msg) => {
+          this.msg = msg
+        })
+      },
+    }
+
+    var vm = new Vue({
+      el: '#root',
+
+      data: {
+        greeting: bus.greeting
+      },
+
+      mounted() {
+        console.log(bus.greeting)
+        // bus.sayHello('world')
+        // bus.$emit('sayHello', 'def')
+        bus.$emit('msg', 'bbb')
+      },
+
+      components: {
+        Child1
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "demo": "../my-components/demo-component"
+  }
+}

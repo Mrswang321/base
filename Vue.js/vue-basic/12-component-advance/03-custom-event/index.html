@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>custom event</title>
+  <script src="../../../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <!-- <child @onchange="handleChange"></child> -->
+    <!-- <custom-checkbox v-model="checkValue"></custom-checkbox> -->
+    <!-- <input type="text" @input="handleInput" :value="textValue"> {{textValue}} -->
+    <!-- <gp21-button @click.native="handleClick"></gp21-button> -->
+    <!-- <custom-change-value 
+      @change-value="handleChangeValue" 
+      :value="value"
+    ></custom-change-value> -->
+    <custom-change-value 
+      :value.sync="value"
+    ></custom-change-value>
+    {{value}}
+  </div>
+  <script>
+    const CustomChangeValue = {
+      props: ['value'],
+      template: `
+        <div>{{value}}</div>
+      `,
+      mounted() {
+        this.$emit('update:value', 300)
+      },
+    }
+
+    const Child = {
+      template: `
+        <div>hello</div>
+      `,
+
+      mounted() {
+        this.$emit('onchange')
+      },
+    }
+
+    const Gp21Button = {
+      template: `
+        <button @click="$emit('on-click')">click</button>
+      `
+    }
+
+    const CustomCheckbox = {
+      model: {
+        prop: 'checked',
+        event: 'change'
+      },
+
+      props: {
+        checked: Boolean
+      },
+
+      template: `
+        <input 
+          :checked="checked"
+          @change="$emit('change', $event.target.checked)" 
+          type="checkbox"
+        />
+      `
+    }
+
+    var vm = new Vue({
+      el: '#root',
+      components: {
+        Child,
+        CustomCheckbox,
+        Gp21Button,
+        CustomChangeValue
+      },
+      data: {
+        checkValue: false,
+        textValue: 'hello',
+        value: 'hello'
+      },
+      methods: {
+        handleChange() {
+          this.checkValue = !this.checkValue
+        },
+        handleInput(e) {
+          this.textValue = e.target.value
+        },
+        handleClick() {
+          console.log(0)
+        },
+        // handleChangeValue(value) {
+        //   this.value = value
+        // }
+      },
+    })
+  </script>
+</body>
+</html>

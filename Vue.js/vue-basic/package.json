@@ -1,0 +1,12 @@
+{
+  "name": "vue-basic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "browser-sync start -s -f **/* --directory --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

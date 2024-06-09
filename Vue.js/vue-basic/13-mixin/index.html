@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mixin</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <my-header></my-header>
+    <button @click="handleClick2">root button</button>
+  </div>
+  <script type="module">
+    import './Header.js'
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        // x: { //merge 合并
+        //   a: 100,
+        //   b: 200
+        // }
+      },
+      methods: {
+        handleClick() {
+          console.log(1)
+        },
+        handleClick2() {
+          console.log(2)
+        }
+      },
+      mounted() {
+        console.log('parent')
+        console.log(this.x)
+      },
+    })
+  </script>
+</body>
+</html>

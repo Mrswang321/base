@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../vue.js"></script>
+  <title>Vue 初探</title>
+</head>
+<body>
+  <div id="root">
+    {{msg}}
+    <ul>
+      <li v-for="item in list">
+        {{item}}
+      </li>
+    </ul>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        msg: 'hello',
+        list: [
+          '',
+          '🍇',
+          '🌰'
+        ]
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>template</title>
+  <script src="../../../vue.js"></script>
+</head>
+<body>
+  <script type="text/x-template" id="hello-world-template">
+    <p>Hello hello hello</p>
+  </script>
+
+  <div id="root">
+    <!-- <child inline-template>
+      <div>hello</div>
+    </child> -->
+    <child></child>
+  </div>
+  <script>
+    Vue.component('child', {
+      template: '#hello-world-template'
+    })
+
+    var vm = new Vue({
+      el: '#root',
+      
+    })
+  </script>
+</body>
+</html>

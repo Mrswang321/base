@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tabbar</title>
+  <script src="../../../vue.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    ul, li {
+      list-style: none;
+      margin: 0;
+      padding: 0
+    }
+
+    #root {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    ul {
+      height: 44px;
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+
+    ul > li {
+      flex: 1;
+      text-align: center;
+      line-height: 44px;
+    }
+
+    ul > li.active {
+      background: chocolate;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <main>
+      <keep-alive>
+        <tab1 v-if="componentId==='tab100'"></tab1>
+      </keep-alive>
+      <component v-if="componentId!=='tab100'" :is="componentId"></component>
+    </main>
+    <ul>
+      <li 
+        v-for="tab, index in tabItems"
+        @click="handleClick(index, tab.component)"
+        :class="{active: curIndex === index}"
+        :key="tab.component"
+      >
+        {{tab.title}}
+      </li>
+    </ul>
+  </div>
+  <script>
+    const tab1 = {
+      template: `
+        <div>
+          <ul>
+            <li 
+              :class="{active: childComponentId === 'child-tab1'}" 
+              @click="changeChild('child-tab1')">
+              swiper
+            </li>
+            <li 
+              :class="{active: childComponentId === 'child-tab2'}" 
+              @click="changeChild('child-tab2')">
+              list
+            </li>
+          </ul>
+          <component :is="childComponentId"></component>
+        </div>
+      `,
+
+
+      mounted() {
+        console.log('mounted1.')
+      },
+
+      activated() {
+        console.log('activeted.')
+      },
+
+      deactivated() {
+        console.log('deactiveted.')
+      },
+
+      data() {
+        return {
+          childComponentId: 'child-tab1',
+        }
+      },
+      methods: {
+        changeChild(childId) {
+          this.childComponentId = childId
+        }
+      },
+    }
+    // const tab1 = {
+    //   template: `
+    //     <keep-alive>
+    //       <tab0></tab0>
+    //     </keep-alive>
+    //   `,
+    //   components: {
+    //     tab0
+    //   }
+    // }
+    const tab2 = {
+      template: `
+        <div>page2</div>
+      `,
+      mounted() {
+        console.log('mounted2.')
+      },
+    }
+    const tab3 = {
+      template: `
+        <div>page3</div>
+      `,
+      mounted() {
+        console.log('mounted3.')
+      },
+    }
+
+    Vue.component('child-tab1', {
+      template: `
+        <div>child-tab1-content</div>
+      `
+    })
+    Vue.component('child-tab2', {
+      template: `
+        <div>child-tab2-content</div>
+      `
+    })
+
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        curIndex: 0,
+        componentId: 'tab100',
+        tabItems: [
+          {
+            component: 'tab100',
+            title: '首页'
+          },
+          {
+            component: 'tab2',
+            title: '搜索'
+          },
+          {
+            component: 'tab3',
+            title: '我的'
+          }
+        ]
+      },
+      methods: {
+        handleClick(index, component) {
+          this.curIndex = index
+          this.componentId = component
+        }
+      },
+      components: {
+        tab1,
+        tab2,
+        tab3
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>instance</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    {{title}}
+    <my-header></my-header>
+    {{list}}
+    {{obj}}
+  </div>
+  <div id="app">
+    {{title}}
+  </div>
+  <script>
+    // 全局定义的组件
+    Vue.component('my-header', {
+      template: `
+        <header>title</header>
+      `
+    })
+
+    // 实例化Vue
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        title: 'hello',
+        list: ['a', 'b'],
+        obj: {
+          x: 0
+        }
+      }
+    })
+
+    // 修改数组的两个特殊情况
+    // 1\arr.length = 0, 不具备响应特性
+    // 2\arr[0] = 100, 不具备响应特性
+
+    // 修改对象的特殊情况
+    // 添加obj.x，x属性，也不具备响应特性
+
+    // 修补方法：
+    // 1/vm.$set(target, propertyName/index, value)
+    // 2/Vue.set(target, propertyName/index, value)
+    // 3/vm.$forceupdate()
+
+    var vm2 = new Vue({
+      el: '#app',
+      data: {
+        title: 'world'
+      }
+    })
+  </script>
+</body>
+</html>

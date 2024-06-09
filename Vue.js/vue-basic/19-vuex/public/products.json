@@ -1,0 +1,29 @@
+{
+  "ret": true,
+  "data": [
+    {
+      "id": "001",
+      "name": "iPhone12 pro",
+      "price": 8900,
+      "inventory": 12
+    },
+    {
+      "id": "002",
+      "name": "iPhone11 pro",
+      "price": 6000,
+      "inventory": 2
+    },
+    {
+      "id": "003",
+      "name": "iPhone10 pro",
+      "price": 3000,
+      "inventory": 5
+    },
+    {
+      "id": "004",
+      "name": "iPhone 8 plus ",
+      "price": 2000,
+      "inventory": 1
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <div>hello</div>
+  </div>
+  <script>
+    var vm = new Vue({
+      props: {
+        x: {
+          type: [Boolean, String],
+          default: true
+        }
+      },
+      el: '#root',
+      data: {
+        title: '',
+        abc: 'aaa'
+      },
+      computed: {
+        doubleX(){
+
+        }
+      },
+      mounted() {
+        console.log(0)
+      },
+      mounted() {
+        console.log(1)
+      },
+      methods: {
+        handleClick() {
+          console.log(0)
+        }
+      },
+      watch: {
+        title() {
+          
+        }
+      }
+    })
+  </script>
+</body>
+</html>

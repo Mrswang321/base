@@ -1,0 +1,31 @@
+.feedback-body {
+  padding: 20rpx;
+}
+
+.feedback {
+  background-color: #fff;
+  padding: 20rpx;
+}
+
+.icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-box-img {
+  margin-right: 20rpx;
+}
+
+.feedback-button {
+  margin: 30rpx 0;
+  height: 80rpx;
+  background-color: #55b637;
+  border-radius: 12rpx;
+  text-align: center;
+  line-height: 80rpx;
+  color: #fff;
+}
+.feedback-button-fail {
+  background-color: #e2483c;
+}

@@ -1,0 +1,14 @@
+<view>
+  parent
+</view>
+<!-- <child2 bindmyevent="handleMyEvent2"> -->
+  <child id="child" bindmyevent="handleMyEvent" title="{{['a']}}"></child>
+<!-- </child2> -->
+
+<child2>
+  <view>child2</view>
+</child2>
+
+<child3 myProperty="hello" myBehaviorProperty="world"></child3>
+
+<child4 id="child4"></child4>

@@ -1,0 +1,112 @@
+<!--pages/index.wxml-->
+<scroll-view
+  class="scroll"
+  scroll-x="{{true}}"
+>
+<view class="inner-scroll" id="the-id">
+
+<text>pages/index.wxml</text>
+  <view>
+    <navigator open-type="navigateTo" url="/pages/detail">
+      goto detail page
+    </navigator>
+    <navigator open-type="redirectTo" url="/pages/detail">
+      goto detail page
+    </navigator>
+    <navigator open-type="switchTab" url="/pages/logs"> goto log page</navigator>
+
+    <button bindtap="handleTap">日志</button>
+
+    <button bindtap="handleChooseImage">从相册中选择</button>
+    
+    <button data-url="http://www.abc.com" bindlongpress="handleButtonClick">click</button>
+
+    <button mark:abc="aaabbbccc" data-url="http://www.def.com" bindtap="{{handleFunction}}">click 2</button>
+  </view>
+
+  <view id="outer" mut-bind:tap="handleTap1">
+    outer view
+    <view id="middle" mut-bind:tap="handleTap2">
+      middle view
+      <view id="inner" bind:tap="handleTap3">
+        inner view
+      </view>
+    </view>
+  </view>
+
+  <view id="outer" mark:m1="aaa" bind:tap="handleTap1" capture-bind:tap="handleTap2">
+    outer view
+    <view id="inner" mark:m2="bbb" bind:tap="handleTap3" capture-bind:tap="handleTap4">
+      inner view
+    </view>
+  </view>
+</view>
+  
+
+</scroll-view>
+
+<map
+>
+  <cover-image bindtap="handleImageTap" src="/resources/location-active.png"></cover-image>
+</map>
+
+<view>
+<input bindinput="handleInput"></input>
+</view>
+
+<view>
+<input model:value="{{inputValue}}"></input>
+{{inputValue}}
+</view>
+
+
+<view class="main"></view>
+<text>bottom</text>
+<view></view>
+<text>{{title}}</text>
+<text>{{msg}}</text>
+
+<view wx:if="{{show}}" name="{{title}}" id="id-{{title}}">item</view>
+<view wx:if="{{!show ? true : false}}">
+  <checkbox checked="{{false}}"> </checkbox>
+</view>
+
+<block wx:for="{{list}}" wx:key="*this" wx:for-index="i" wx:for-item="v">
+  <view>{{i}}</view>
+  <view>{{v}}</view>
+</block>
+
+<view class="mul">
+  <view style="color: green" wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9]}}" wx:for-item="i">
+    <view wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9]}}" wx:for-item="j">
+      <view wx:if="{{i <= j}}">
+        {{i}} * {{j}} = {{i * j}}
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="show">
+a
+</view>
+<view wx:else>
+b
+</view>
+
+<template name="msgItem">
+  <view>
+    <text> {{index}}: {{msg}} </text>
+    <text> Time: {{time}} </text>
+  </view>
+</template>
+
+
+<!-- <import src="../templates/tpl.wxml" /> -->
+<template is="msgItem" data="{{...item}}"></template>
+<template is="msgItem" data="{{...item}}"></template>
+<template is="msgItem" data="{{...item}}"></template>
+<template is="msgItem" data="{{...item}}"></template>
+
+<include src="../templates/tpl2.wxml" />
+<include src="../templates/tpl2.wxml" />
+<include src="../templates/tpl2.wxml" />

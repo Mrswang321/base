@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>todolist slot</title>
+  <script src="../../../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <todo-list :todos="todos">
+      <template v-slot:todo="{ todo }">
+        <span v-if="todo.isComplete">✓</span>
+        {{ todo.text }}
+      </template>
+    </todo-list>
+  </div>
+  <script>
+    const TodoList = {
+      props: ['todos'],
+      template: `
+        <ul>
+          <li
+            v-for="todo in filteredTodos"
+            v-bind:key="todo.id"
+          >
+            <slot name="todo" :todo="todo">
+              {{ todo.text }}
+            </slot>
+          </li>
+        </ul>
+      `,
+      computed: {
+        filteredTodos() {
+          return this.todos.filter((value, index) => {
+            return index % 2 === 0
+          })
+        }
+      }
+    }
+    var vm = new Vue({
+      el: '#root',
+      components: {
+        TodoList
+      },
+      data: {
+        todos: [
+          {
+            id: '001',
+            text: 'task 1',
+            isComplete: true
+          },
+          {
+            id: '002',
+            text: 'task 2',
+            isComplete: true
+          },
+          {
+            id: '003',
+            text: 'task 3',
+            isComplete: false
+          }
+        ]
+      }
+    })
+  </script>
+</body>
+</html>

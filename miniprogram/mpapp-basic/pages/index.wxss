@@ -1,0 +1,28 @@
+@import './style.wxss';
+
+text {
+  font-size: 60rpx;
+}
+
+.main {
+  height: 2000rpx;
+}
+
+.mul view:nth-child(2n) {
+  font-size: 40rpx;
+}
+
+.scroll {
+  height: 500rpx;
+}
+
+.inner-scroll {
+  width: 2000rpx;
+}
+
+@media (min-width: 280px) {
+  /* 仅在 480px 或更宽的屏幕上生效的样式规则 */
+  text {
+    font-size: 160rpx;
+  }
+}

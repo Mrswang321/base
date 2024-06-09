@@ -1,0 +1,13 @@
+{
+  "name": "json-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mock.js",
+  "scripts": {
+    "mock": "json-server ./mock.js -r ./routes.json -p 9000 -w",
+    "mockdb": "json-server ./movie-control.json -p 9090 -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

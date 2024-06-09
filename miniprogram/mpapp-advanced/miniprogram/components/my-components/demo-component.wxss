@@ -1,0 +1,22 @@
+.title {
+  color: red;
+  font-size: 50rpx;
+}
+
+.header {
+  font-size: 100rpx;
+}
+
+.side {
+  color: purple;
+}
+
+/* :host {
+  color: yellowgreen;
+  font-size: 60rpx;
+} */
+
+/* 不推荐 */
+/* text {
+  color: red;
+} */

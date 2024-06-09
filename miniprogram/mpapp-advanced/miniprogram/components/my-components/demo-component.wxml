@@ -1,0 +1,6 @@
+<!--components/my-component/demo-component.wxml-->
+<text class="title">{{title}}</text>
+<slot name="s1"></slot>
+<slot name="s2"></slot>
+<demo2 class="header" style="color: tomato"></demo2>
+<text class="~footer">footer</text>

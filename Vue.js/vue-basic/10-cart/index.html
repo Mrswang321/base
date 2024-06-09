@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cart expample</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <div>
+      <h1>产品列表</h1>
+      <ul>
+        <li v-for="product in products" :key="product.id">
+          {{product.name}} - ￥{{product.price}}
+          <button :disabled="product.inventory === 0" @click="addToCart(product)">放入购物车</button>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h1>购物车</h1>
+      <ul>
+        <li v-for="cart in carts">
+          {{cart.name}}: {{cart.quantity}} x {{cart.price}} = {{cart.quantity * cart.price}}
+        </li>
+      </ul>
+    </div>
+    <div v-if="totalPrice > 0">
+      {{totalPrice}}
+    </div>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        products: [],
+        carts: []
+      },
+      mounted() {
+        fetch('./products.json')
+          .then(response => response.json())
+          .then(result => {
+            this.products = result.data
+          })
+      },
+      methods: {
+        addToCart(product) {
+          let result = this.carts.find(value => value.id === product.id)
+
+          // 此产品库存减一
+          product.inventory--
+
+          // 放入购物车
+          if (result) {
+            result.quantity++
+          } else {
+            let { id, name, price } = product
+            this.carts.push({
+              id,
+              name,
+              quantity: 1,
+              price
+            })
+          }
+        }
+      },
+      
+      computed: {
+        totalPrice() {
+          return this.carts.reduce((sum, value) => {
+            sum += value.price * value.quantity
+            return sum
+          }, 0)
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "usingComponents": {
+    "demo": "../../components/my-components/demo-component",
+    "about": "./about/index",
+    "parent": "../../components/my-components/reaction/parent",
+    "custom-ul": "../../components/my-components/ralations/custom-ul",
+    "custom-li": "../../components/my-components/ralations/custom-li",
+
+    "custom-form": "../../components/my-components/ralations2/form",
+    "custom-input": "../../components/my-components/ralations2/input",
+    "custom-button": "../../components/my-components/ralations2/button",
+
+    "watch-demo": "../../components/my-components/watch/watch-demo",
+    "pure-data": "../../components/my-components/pure-data/pure-data",
+
+    "abstract": "../../components/my-components/abstract-component/abstract",
+    "component1": "../../components/my-components/abstract-component/component1",
+    "component2": "../../components/my-components/abstract-component/component2",
+
+    "definition-field": "../../components/my-components/definition-field/definition-field"
+  }
+}

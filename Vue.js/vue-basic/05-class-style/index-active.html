@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>active</title>
+  <script src="../vue.js"></script>
+  <style>
+    .active {
+      font-size: 50px;
+      color: yellowgreen;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <ul>
+      <li 
+        v-for="(li, i) in list"
+        @click="handleClick(i)"
+        :class="{active: i === curIndex}"
+      >
+        {{li}}
+      </li>
+    </ul>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        list: ['aaaa', 'bbbb', 'cccc'],
+        curIndex: 0
+      },
+      methods: {
+        handleClick(index) {
+          this.curIndex = index
+        }
+      },
+    })
+  </script>
+</body>
+</html>

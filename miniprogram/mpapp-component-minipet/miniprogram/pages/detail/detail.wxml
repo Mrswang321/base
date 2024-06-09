@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="item">
+    <view class="label">{{address}}</view>
+  </view>
+  <view class="item">
+    <view class="label">
+      <image class="image" wx:if="{{type !== ''}}" src="{{'../../resources/' + type + '.png'}}"></image>
+      <view>{{type === 'buy' ? '求购' : '转让'}}</view>
+    </view>
+  </view>
+  <view class="item">
+    <view class="label">{{message}}</view>
+  </view>
+  <view class="item">
+    <view class="label">{{contact}}</view>
+  </view>
+</view>

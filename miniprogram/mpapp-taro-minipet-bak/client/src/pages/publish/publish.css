@@ -1,0 +1,77 @@
+.item {
+  display: flex;
+  height: 100rpx;
+  background-color: #fff;
+  border-bottom: solid 1rpx #eee;
+}
+
+.item .label {
+  flex: 100;
+  line-height: 100rpx;
+  padding-left: 20rpx;
+  color: #666;
+}
+
+.item .content {
+  flex: 275;
+  display: flex;
+  align-items: center;
+  padding-right: 20rpx;
+  font-weight: 100;
+}
+
+.item .content input {
+  width: 100%;
+  padding-right: 20rpx;
+  font-weight: 100;
+}
+
+.item .content radio-group {
+  display: flex;
+  font-weight: 100;
+}
+
+.item .content label {
+  display: flex;
+  align-items: center;
+  margin-right: 20rpx;
+}
+
+.button {
+  height: 80rpx;
+  background-color: #f19a38;
+  margin: 20rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 10rpx;
+}
+
+
+.feedback {
+  background-color: #fff;
+  padding: 20rpx;
+}
+
+.icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-box-img {
+  margin-right: 20rpx;
+}
+
+.feedback-button {
+  margin: 30rpx 0;
+  height: 80rpx;
+  background-color: #55b637;
+  border-radius: 12rpx;
+  text-align: center;
+  line-height: 80rpx;
+  color: #fff;
+}
+.feedback-button-fail {
+  background-color: #e2483c;
+}

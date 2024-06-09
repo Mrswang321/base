@@ -1,0 +1,3 @@
+Hybrid: 混合开发
+WebView: 原生APP里放置一个浏览器窗口，把H5的页面嵌入到原生里
+JS Bridge：为原生 NativeApps 和 H5 WebApps 搭建一个桥梁，使H5页面可以和原生应用交互

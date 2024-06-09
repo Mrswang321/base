@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>template</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <!-- 插值表达式 -->
+    <!-- <div v-once>
+      {{title}}
+    </div> -->
+    <!-- <div v-html="msg"></div> -->
+    <!-- <div v-text="header">{{msg}}</div>
+    <div>{{title}} - {{header}}</div>
+    <div v-bind:id="header"></div> -->
+    <!-- <div>{{false ? 'hello' : 'world'}}</div> -->
+    <!-- <div>{{true || 'hello'}}</div> -->
+    <!-- <div>{{10 & 10}}</div> -->
+    <!-- <div>{{num++}}</div> 造成死循环-->
+    <!-- <div>{{num+1}}</div> -->
+    <!-- <div>{{/\d+/.test(num)}}</div> -->
+    <!-- <div>{{handleRun()}}</div> -->
+    <!-- <div>{{title = 'olleh'}}</div> -->
+    <!-- <div>{{if(true){console.log(0)}}}</div> 不能写 -->
+    <!-- <div>{{(function(title){console.log(title)})(title)}}</div> -->
+    <!-- v-if v-for v-model v-bind v-once v-html v-text v-on -->
+    <!-- <div v-on:keyup.enter="handleKeyup"></div> -->
+    <!-- <div v-bind:[title]="'abc'"></div> -->
+    <!-- <div :x="0"></div>
+    <div @click="handleClick"></div> -->
+  </div>
+  <script>
+    const data = {
+      title: 'hello',
+      msg: '<iframe src="http://www.baidu.com"></iframe>',
+      header: 'line',
+      num: 100
+    }
+
+    var vm = new Vue({
+      el: '#root',
+      data,
+
+      mounted() {
+        setTimeout(() => {
+          this.title = 'world'
+        }, 2000)
+      },
+
+      methods: {
+        handleRun() {
+          console.log(0)
+        }
+      }
+    })
+
+    // var y = 'a'
+
+    // var x = {
+    //   [y]: 0,
+    //   b: 1
+    // }
+    // console.log(x.a)
+  </script>
+</body>
+</html>

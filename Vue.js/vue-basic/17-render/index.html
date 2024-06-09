@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>render</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <!-- <my-link></my-link> -->
+    <my-div :title="'abc'"></my-div>
+  </div>
+  <script>
+    Vue.directive('my-custom-directive', (el, bindings) => {
+      console.log(el)
+    })
+
+    const MyLink = {
+      // template: `
+      //   <a href="http://www.baidu.com" target="_blank">百度</a>
+      // `
+      render(createElement) {
+        // return createElement(
+        //   'a',
+        //   {
+        //     attrs: { // html属性
+        //       href: 'javascript: void(0)',
+        //       // target: '_blank'
+        //     }
+        //   },
+        //   '百度'
+        // )
+        return ( // jsx
+          <a href="http://www.baidu.com" target="_blank">百度</a>
+        )
+      }
+    }
+
+    const MyDiv = {
+      props: ['title'],
+
+      data() {
+        return {
+          list: [
+            'a',
+            'b',
+            'c'
+          ]
+        }
+      },
+
+      components: {
+        MyLink
+      },
+
+      mounted() {
+        console.log(this.$refs)
+      },
+
+      render(h) {
+        return h(
+          'div',
+
+          {
+            class: {
+              color: false
+            },
+            style: {
+              fontSize: '20px'
+            },
+            props: { // DOM 属性
+              title: 'abc'
+            },
+            // domProps: {
+            //   innerHTML: 'baz'
+            // },
+            on: {
+              click() {
+                console.log(0)
+              }
+            },
+
+            // <div v-my-custom-directive:foo.bar="1+1"></div>
+
+            directives: [
+              {
+                name: 'my-custom-directive',
+                value: '2',
+                expression: '1 + 1',
+                arg: 'foo',
+                modifiers: {
+                  bar: true
+                }
+              }
+            ],
+
+            scopedSlots: {
+              default: props => createElement('span', props.text)
+            },
+
+            ref: 'aaa',
+          },
+
+
+          [
+            h(
+              'p',
+              {},
+              this.title
+            ),
+            h(
+              'p',
+              {},
+              this.title
+            ),
+            h(
+              'my-link',
+              {
+                nativeOn: {
+                  click() {
+                    console.log(1)
+                  }
+                }
+              },
+              ''
+            ),
+            h(
+              'ul',
+              this.list.map((value, index) => {
+                return h(
+                  'li', {
+                    key: value,
+                    ref: 'liref',
+                    refInFor: true
+                  },
+                value)
+              })
+            )
+          ]
+        )
+      }
+    }
+
+    var vm = new Vue({
+      el: '#root',
+      components: {
+        MyLink,
+        MyDiv
+      },
+      mounted() {
+        console.log(this.$refs)
+      },
+    })
+  </script>
+</body>
+</html>

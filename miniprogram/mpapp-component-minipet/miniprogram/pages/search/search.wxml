@@ -1,0 +1,19 @@
+<view class="search">
+  <!-- <view class="search-input">
+    <input model:value="{{keywords}}" type="text" />
+  </view>
+  <view class="search-btn" bindtap="handleSearchTap">搜索</view> -->
+  <van-search
+    value="{{ keywords }}"
+    shape="round"
+    background="#52b9d2"
+    placeholder="请输入搜索关键词"
+    bind:search="handleSearchTap"
+  />
+  <scroll-view scroll-y class="result">
+    <view class="result-item" wx:for="{{list}}" wx:key="_id">
+      <view class="address">{{item.address}}</view>
+      <view class="message">{{item.message}}</view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>history api</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+  <style>
+    .active {
+      font-size: 50px;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>电影</li>
+    <li>影院</li>
+  </ul>
+  <div id="content"></div>
+  <script>
+    const route = [
+      {
+        path: '/movie',
+        component: '<div>movie</div>'
+      },
+      {
+        path: '/theater',
+        component: '<div>theater</div>'
+      }
+    ]
+
+    function render(component, index) {
+      $('#content').html(component)
+      $('li').eq(index).addClass('active').siblings().removeClass('active')
+    }
+
+    $('li').on('click', function() {
+      let {path, component} = route[$(this).index()]
+      history.pushState({id: 0}, 'movie', path)
+      render(component, $(this).index())
+    })
+
+    $(window).on('load', () => {
+      history.pushState(null, 'movie', '/movie')
+      render(route[0].component, 0)
+    })
+
+    $(window).on('popstate', () => {
+      let state = history.state
+      let pathname = location.pathname
+      let {component} = route.find(v => v.path === pathname)
+      let index = _.findIndex(route, v => v.path === pathname)
+      render(component, index)
+    })
+  </script>
+</body>
+</html>
